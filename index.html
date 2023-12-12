@@ -8,11 +8,26 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Sudoku</title>
   </head>
-  <body onload="loadGame()">
+  <body onload="loadGame(); loadNumbers()">
     <header>
       <h1><a href="index.html">Sudoku</a></h1>
     </header>
-    <main></main>
+    <main>
+      <div>
+        <label for="difficulty">Select Difficulty:</label>
+        <select id="difficulty">
+          <option value="easy" selected>Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+
+      <div class="sudoku-with-numbers">
+        <table id="sudoku-board"></table>
+
+        <div id="numbers"></div>
+      </div>
+    </main>
     <footer>
       <p>Copyright &copy; <strong>Sudoku</strong> All Rights Reserved</p>
     </footer>

@@ -1,0 +1,150 @@
+body {
+  font-family: sans-serif;
+  background-color: #f4f4f4;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background: rgb(174, 192, 192);
+  color: #ffffff;
+}
+
+header h1 {
+  margin: auto;
+  padding: 50px 0;
+  font-size: 35px;
+  text-align: center;
+}
+
+header h1 a:hover {
+  color: #ffffff;
+}
+
+header h1 a {
+  color: #000000;
+  text-decoration: none;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.sudoku-with-numbers {
+  display: flex;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+td {
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 30px;
+}
+
+td:first-child {
+  border-left: 3px solid black;
+}
+
+tr:first-child {
+  border-top: 3px solid black;
+}
+
+td:nth-child(3n) {
+  border-right: 3px solid black;
+}
+
+tr:nth-child(3n) {
+  border-bottom: 3px solid black;
+}
+
+.filled {
+  background-color: rgb(174, 192, 192);
+}
+
+.incorrect {
+  background-color: rgb(242, 103, 103);
+}
+
+#numbers {
+  padding: 0px;
+  margin: 0px;
+}
+
+#numbers ul {
+  margin: 0px;
+  padding: 30px;
+  list-style-type: none;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+#numbers li:active {
+  background-color: rgb(174, 192, 192);
+  border-radius: 5px;
+}
+
+#numbers li {
+  /* border: 1px solid black; */
+  padding: 5px;
+}
+
+footer {
+  background-color: rgba(0, 174, 255, 0.42);
+  padding: 15px;
+  margin-top: 24px;
+}
+
+footer p {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .sudoku-with-numbers {
+    flex-direction: column;
+  }
+
+  #numbers {
+    margin: 30px auto;
+  }
+
+  #numbers li {
+    /* margin-right: 24px;
+    margin-top: 0px;
+    padding: 0px;
+    list-style-type: none;
+    font-size: 25px; */
+    display: inline;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  header h1 {
+    padding: 30px 0;
+    font-size: 24px;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  td {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  td {
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+  }
+}
