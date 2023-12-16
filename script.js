@@ -70,15 +70,15 @@ function loadNumbers() {
   }
 
   const numbersHtml = `
-  <ul>
+ 
       ${numberArray
         .map(
           (number) => `
-              <li value="${number}">${number}</li>
+              <p value="${number}">${number}</p>
           `
         )
         .join('')}
-  </ul>
+  
 `;
 
   numbers.innerHTML = numbersHtml;
@@ -98,33 +98,33 @@ function cellClickListeners() {
 }
 
 function numberClickListeners() {
-  const availableNumbersList = document
-    .getElementById('numbers')
-    .querySelector('ul');
+  const numbers = document.getElementById('numbers').querySelectorAll('p');
 
-  availableNumbersList.addEventListener('click', function (event) {
-    const selectedLi = event.target;
-    const selectedNumber = parseInt(selectedLi.getAttribute('value'));
+  numbers.forEach((number) => {
+    number.addEventListener('click', function (event) {
+      const selectedLi = event.target;
+      const selectedNumber = parseInt(selectedLi.getAttribute('value'));
 
-    // selectedLi.classList.add('blurred');
+      // selectedLi.classList.add('blurred');
 
-    console.log(selectedCell, selectedLi, selectedNumber);
-    console.log(selectedCell.parentNode.rowIndex, selectedCell.cellIndex);
+      console.log(selectedCell, selectedLi, selectedNumber);
+      console.log(selectedCell.parentNode.rowIndex, selectedCell.cellIndex);
 
-    const row = selectedCell.parentNode.rowIndex;
-    const cell = selectedCell.cellIndex;
+      const row = selectedCell.parentNode.rowIndex;
+      const cell = selectedCell.cellIndex;
 
-    console.log(solvedState[row][cell]);
-    if (solvedState[row][cell] === selectedNumber) {
-      console.log('ok');
+      console.log(solvedState[row][cell]);
+      if (solvedState[row][cell] === selectedNumber) {
+        console.log('ok');
 
-      if (!isNaN(selectedNumber) && selectedCell) {
+        if (!isNaN(selectedNumber) && selectedCell) {
+          selectedCell.textContent = selectedNumber;
+          selectedCell.classList.remove('incorrect');
+        }
+      } else {
+        selectedCell.classList.add('incorrect');
         selectedCell.textContent = selectedNumber;
-        selectedCell.classList.remove('incorrect');
       }
-    } else {
-      selectedCell.classList.add('incorrect');
-      selectedCell.textContent = selectedNumber;
-    }
+    });
   });
 }
