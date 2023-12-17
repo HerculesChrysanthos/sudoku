@@ -1,6 +1,9 @@
 # SUDOKU
 
-### For running add this folder into the xampp folder and into htdocs folder and start the server and paste on your browser: http://localhost/3312215IraklisChrysanthos/sudoku/index.html
+### For running
+
+- add this folder into the xampp folder and into htdocs folder
+- start the server and paste on your browser: http://localhost/3312215IraklisChrysanthos/sudoku/index.html
 
 Difficulties:
 
