@@ -5,41 +5,18 @@ let selectedCell;
 function renderTable(game) {
   const table = document.getElementById('sudoku-board');
 
-  // TODO clear table
   table.innerHTML = '';
   for (let i = 0; i < 9; i++) {
     const row = document.createElement('tr');
-    // const row = table.insertRow(i);
 
     for (let j = 0; j < 9; j++) {
       const cell = document.createElement('td');
-      //   const input = document.createElement('input');
-      //   input.type = 'text';
-      //   input.maxLength = 1;
-      //   input.dataset.row = i;
-      //   input.dataset.col = j;
 
-      /**
-       * Disable input for the pre defined cells
-       */
       if (game[i][j] !== 0) {
-        //   input.value = game[i][j];
-        //   input.disabled = true;
         cell.textContent = game[i][j];
         cell.classList.add('filled');
       }
-
-      //   if (row == 2 || row == 5) {
-      //     tile.classList.add('horizontal-line');
-      //   }
-      //   if (cell == 2 || cell == 5) {
-      //     tile.classList.add('vertical-line');
-      //   }
-
-      //cell.appendChild(input);
       row.appendChild(cell);
-
-      //   console.log(cell);
     }
     table.appendChild(row);
   }
@@ -47,12 +24,10 @@ function renderTable(game) {
 
 function loadGame() {
   const difficulty = document.getElementById('difficulty').value;
-  //const sudokuBoard = document.getElementById('sudoku-board');
 
   fetch(`games/${difficulty}.json`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       initialState = data.initialState;
       solvedState = data.solvedState;
 
@@ -113,15 +88,9 @@ function numberClickListeners() {
       const selectedLi = event.target;
       const selectedNumber = parseInt(selectedLi.getAttribute('value'));
 
-      // selectedLi.classList.add('blurred');
-
-      console.log(selectedCell, selectedLi, selectedNumber);
-      console.log(selectedCell.parentNode.rowIndex, selectedCell.cellIndex);
-
       const row = selectedCell.parentNode.rowIndex;
       const cell = selectedCell.cellIndex;
 
-      console.log(solvedState[row][cell]);
       if (solvedState[row][cell] === selectedNumber) {
         console.log('ok');
 

@@ -58,7 +58,6 @@ main {
 
 table {
   border-collapse: collapse;
-  /* margin: 0 auto; */
 }
 
 td {
@@ -86,7 +85,7 @@ tr:nth-child(3n) {
 }
 
 td.selected {
-  background-color: #ccc; /* Grey background color */
+  background-color: #ccc;
 }
 
 .filled {
@@ -99,7 +98,6 @@ td.selected {
 
 #numbers {
   padding: 0px;
-  /* margin: 0px 0px 0px 50px; */
   display: flex;
   flex-direction: column;
 }
