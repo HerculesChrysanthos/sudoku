@@ -5,6 +5,8 @@ let selectedCell;
 function renderTable(game) {
   const table = document.getElementById('sudoku-board');
 
+  // TODO clear table
+  table.innerHTML = '';
   for (let i = 0; i < 9; i++) {
     const row = document.createElement('tr');
     // const row = table.insertRow(i);
@@ -84,14 +86,20 @@ function loadNumbers() {
   numbers.innerHTML = numbersHtml;
 }
 
+let selectedGeneralCell;
+
 function cellClickListeners() {
   const cells = document.querySelectorAll('#sudoku-board td');
   cells.forEach((cell) => {
     cell.addEventListener('click', function () {
-      console.log('mpike');
       if (!this.classList.contains('filled')) {
+        if (selectedCell) {
+          selectedCell.classList.remove('selected');
+        }
+
+        this.classList.add('selected');
+
         selectedCell = this;
-        console.log('mpike2222');
       }
     });
   });
@@ -122,6 +130,7 @@ function numberClickListeners() {
           selectedCell.classList.remove('incorrect');
         }
       } else {
+        selectedCell.classList.remove('selected');
         selectedCell.classList.add('incorrect');
         selectedCell.textContent = selectedNumber;
       }

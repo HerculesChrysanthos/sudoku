@@ -31,13 +31,34 @@ main {
   margin: 0 auto;
 }
 
+#choice {
+  display: flex;
+  align-items: center;
+  margin: 24px 0px;
+}
+
+#choice label {
+  margin-right: 14px;
+}
+
+#choice select {
+  width: 30%;
+  padding: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
 .sudoku-with-numbers {
   display: flex;
+  justify-content: space-evenly;
 }
 
 table {
   border-collapse: collapse;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 td {
@@ -64,6 +85,10 @@ tr:nth-child(3n) {
   border-bottom: 3px solid black;
 }
 
+td.selected {
+  background-color: #ccc; /* Grey background color */
+}
+
 .filled {
   background-color: rgb(174, 192, 192);
 }
@@ -74,17 +99,19 @@ tr:nth-child(3n) {
 
 #numbers {
   padding: 0px;
-  margin: 0px;
+  /* margin: 0px 0px 0px 50px; */
   display: flex;
   flex-direction: column;
 }
 
 #numbers p {
-  margin: 0px;
-  padding: 15px;
+  margin: 4px;
+  padding: 8px;
   list-style-type: none;
   font-size: 30px;
   cursor: pointer;
+  background-color: rgb(200, 213, 213);
+  border-radius: 5px;
 }
 
 #numbers p:active {
@@ -111,9 +138,27 @@ footer p {
     flex-direction: column;
   }
 
+  table {
+    margin: 0 auto;
+  }
+
   #numbers {
     flex-direction: row;
     margin: 30px auto;
+  }
+
+  #numbers p {
+    padding: 8px;
+  }
+
+  #choice {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  #choice select {
+    margin-top: 14px;
+    width: 100%;
   }
 }
 
@@ -124,7 +169,7 @@ footer p {
   }
 
   main {
-    width: 100%;
+    width: 90%;
   }
 
   td {
@@ -134,15 +179,21 @@ footer p {
   }
 
   #numbers p {
+    margin: 0 10px 0 0;
+    padding: 10px;
     font-size: 16px;
   }
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 380px) {
   td {
     width: 25px;
     height: 25px;
     font-size: 12px;
+  }
+
+  select {
+    width: 100%;
   }
 
   #numbers {
@@ -150,7 +201,7 @@ footer p {
   }
 
   #numbers p {
-    padding: 10px;
+    padding: 4px;
     font-size: 12px;
   }
 }

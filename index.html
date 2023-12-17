@@ -13,9 +13,9 @@
       <h1><a href="index.html">Sudoku</a></h1>
     </header>
     <main>
-      <div>
+      <div id="choice">
         <label for="difficulty">Select Difficulty:</label>
-        <select id="difficulty">
+        <select id="difficulty" onchange="loadGame()">
           <option value="easy" selected>Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
