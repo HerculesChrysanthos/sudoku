@@ -2,6 +2,30 @@ let initialState;
 let solvedState;
 let selectedCell;
 
+let emptyCells = [];
+
+function initializeEmptyCells() {
+  const cells = document.querySelectorAll('#sudoku-board td');
+  emptyCells = Array.from(cells).filter(
+    (cell) => !cell.classList.contains('filled')
+  );
+}
+
+function updateEmptyCells(cell) {
+  const index = emptyCells.indexOf(cell);
+  if (index !== -1) {
+    emptyCells.splice(index, 1);
+
+    // Check if it was the last empty cell
+    if (emptyCells.length === 0) {
+      console.log('The last empty cell was filled!');
+
+      alert('Congratulations! You have successfully completed the Sudoku.');
+      loadGame();
+    }
+  }
+}
+
 function renderTable(game) {
   const table = document.getElementById('sudoku-board');
 
@@ -32,6 +56,7 @@ function loadGame() {
       solvedState = data.solvedState;
 
       renderTable(initialState);
+      initializeEmptyCells();
       cellClickListeners();
       numberClickListeners();
     })
@@ -92,11 +117,10 @@ function numberClickListeners() {
       const cell = selectedCell.cellIndex;
 
       if (solvedState[row][cell] === selectedNumber) {
-        console.log('ok');
-
         if (!isNaN(selectedNumber) && selectedCell) {
           selectedCell.textContent = selectedNumber;
           selectedCell.classList.remove('incorrect');
+          updateEmptyCells(selectedCell);
         }
       } else {
         selectedCell.classList.remove('selected');
